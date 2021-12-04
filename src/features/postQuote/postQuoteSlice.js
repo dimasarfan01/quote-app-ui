@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   quote: '',
-  tags: '',
+  tags: [''],
 };
 
 export const postQuoteSlice = createSlice({
@@ -13,7 +13,7 @@ export const postQuoteSlice = createSlice({
       state.quote = action.payload;
     },
     setTags: (state, action) => {
-      state.tags = action.payload.split(',');
+      state.tags = action.payload.toLowerCase().split(',');
     },
   },
 });

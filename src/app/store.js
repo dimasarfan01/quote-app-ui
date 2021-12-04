@@ -11,6 +11,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import userDataReducer from '../features/userData/userDataSlice';
 import postQuoteReducer from '../features/postQuote/postQuoteSlice';
+import { getQuoteDataApi } from '../services/quote';
 
 const persistConfig = {
   key: 'userData',
@@ -24,13 +25,14 @@ const store = configureStore({
   reducer: {
     userData: persistedUserDataReducer,
     postQuote: postQuoteReducer,
+    [getQuoteDataApi.reducerPath]: getQuoteDataApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(getQuoteDataApi.middleware),
 });
 
 export default store;

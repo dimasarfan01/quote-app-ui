@@ -22,7 +22,7 @@ export const postSignInUser = async (data) => {
 };
 
 export const checkExistedEmail = async (data) => {
-  const url = `${ROOT_API}/${API_VERSION}/data-users/check`;
+  const url = `${ROOT_API}/${API_VERSION}/user/check-email`;
   return callAPI({
     url,
     method: 'POST',

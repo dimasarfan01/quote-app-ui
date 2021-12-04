@@ -1,5 +1,6 @@
 import { BsList } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import IconTitle from '../../atoms/IconTitle';
 import NavList from './NavList';
@@ -14,10 +15,11 @@ import Cookies from 'js-cookie';
 function Navbar() {
   const user = useSelector((state) => state.userData.data);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleLogout = async () => {
     dispatch(setDataUser(null));
     Cookies.remove('token');
+    navigate('/');
   };
 
   return (
