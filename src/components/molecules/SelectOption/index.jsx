@@ -17,7 +17,7 @@ function SelectOption({ state, setState, totalPage }) {
       <div className="p-2 flex flex-col space-y-2">
         <select
           value={state.limit}
-          onChange={(e) => setState({ ...state, limit: e.target.value })}
+          onChange={(e) => setState({ page: 1, limit: e.target.value })}
           className="select select-bordered w-full max-w-xs"
         >
           <option value={6}>Limit 6</option>
